@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+@{
+    Layout = null;
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!DOCTYPE html>
+<html lang="tr">
+
+@await Component.InvokeAsync("_UIHeadComponentPartial")
+
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        @await Component.InvokeAsync("_UISideBarComponentPartial")
+        <div class="content">
+            @await Component.InvokeAsync("_UINavBarComponentPartial")
+            @RenderBody()
+            @await Component.InvokeAsync("_UIFooterComponentPartial")
+        </div>
+    </div>
+    @await Component.InvokeAsync("_UILayoutScriptComponentPartial")
+</body>
+
+</html>

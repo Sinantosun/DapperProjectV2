@@ -7,8 +7,8 @@
         public Task<int> GetCarCountAsync();
         public Task<int> GetRedCarCountAsync();
         public Task<int> GetSedanCarCountAsync();
-        public Task<int> GetMotorVolumeCount(); //1300-1600 CC
-        public Task<int> GetIstanbulCarPlateCount();
-        public Task<int> GetlicensedBefore1998();
+        public Task<int> GetMotorVolumeCountAsync(); //1300-1600 CC
+        public Task<int> GetIstanbulCarPlateCountAsync();
+        public Task<int> GetlicensedBefore1998Async();
     }
 }

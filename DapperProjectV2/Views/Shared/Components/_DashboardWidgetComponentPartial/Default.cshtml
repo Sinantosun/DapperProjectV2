@@ -1,73 +1,159 @@
-﻿<div class="row g-4">
-    <div class="col-sm-6 col-xl-3">
-        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-            <i class="fa fa-chart-line fa-3x text-primary"></i>
-            <div class="ms-3">
-                <p class="mb-2">Today Sale</p>
-                <h6 class="mb-0">$1234</h6>
+﻿
+
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="card card-stats card-round">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-icon">
+                        <div class="icon-big text-center icon-primary bubble-shadow-small">
+                            <i class="fa fa-car"></i>
+                        </div>
+                    </div>
+                    <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                            <p class="card-category">Araç Sayısı</p>
+                            <h4 class="card-title">@ViewBag.getCarCount.ToString("N0")</h4>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-xl-3">
-        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-            <i class="fa fa-chart-bar fa-3x text-primary"></i>
-            <div class="ms-3">
-                <p class="mb-2">Total Sale</p>
-                <h6 class="mb-0">$1234</h6>
+    <div class="col-sm-6 col-md-3">
+        <div class="card card-stats card-round">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-icon">
+                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                            <i class="fa fa-arrow-up"></i>
+                        </div>
+                    </div>
+                    <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                            <p class="card-category">2012 model Üstü Araç Sayısı</p>
+                            <h4 class="card-title">@ViewBag.GetCarOrderThan2012Count.ToString("N0")</h4>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-xl-3">
-        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-            <i class="fa fa-chart-area fa-3x text-primary"></i>
-            <div class="ms-3">
-                <p class="mb-2">Today Revenue</p>
-                <h6 class="mb-0">$1234</h6>
+    <div class="col-sm-6 col-md-3">
+        <div class="card card-stats card-round">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-icon">
+                        <div class="icon-big text-center icon-success bubble-shadow-small">
+                            <i class="fa fa-cog"></i>
+                        </div>
+                    </div>
+                    <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                            <p class="card-category">Düz Vites Araç Sayısı</p>
+                            <h4 class="card-title">@ViewBag.GetCarWithManuelGearCount.ToString("N0")</h4>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-xl-3">
-        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-            <i class="fa fa-chart-pie fa-3x text-primary"></i>
-            <div class="ms-3">
-                <p class="mb-2">Total Revenue</p>
-                <h6 class="mb-0">$1234</h6>
+    <div class="col-sm-6 col-md-3">
+        <div class="card card-stats card-round">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-icon">
+                        <div class="icon-big text-center icon-secondary bubble-shadow-small">
+                            <i class="fa fa-hashtag"></i>
+                        </div>
+                    </div>
+                    <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                            <p class="card-category">İstanbul Plakalı Araba Sayısı</p>
+                            <h4 class="card-title">@ViewBag.GetIstanbulCarPlateCount.ToString("N0")</h4>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-xl-3">
-        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-            <i class="fa fa-chart-line fa-3x text-primary"></i>
-            <div class="ms-3">
-                <p class="mb-2">Today Sale</p>
-                <h6 class="mb-0">$1234</h6>
+    <div class="col-sm-6 col-md-3">
+        <div class="card card-stats card-round">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-icon">
+                        <div class="icon-big text-center icon-primary bubble-shadow-small">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                    </div>
+                    <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                            <p class="card-category">Lisansı 1998 yılı sonrası araç Sayısı</p>
+                            <h4 class="card-title">@ViewBag.GetlicensedBefore1998.ToString("N0")</h4>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-xl-3">
-        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-            <i class="fa fa-chart-bar fa-3x text-primary"></i>
-            <div class="ms-3">
-                <p class="mb-2">Total Sale</p>
-                <h6 class="mb-0">$1234</h6>
+    <div class="col-sm-6 col-md-3">
+        <div class="card card-stats card-round">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-icon">
+                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                            <i class="fa fa-bookmark" aria-hidden="true"></i>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                            <p class="card-category">1.3 - 1.6 motor araç sayısı</p>
+                            <h4 class="card-title">1303</h4>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-xl-3">
-        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-            <i class="fa fa-chart-area fa-3x text-primary"></i>
-            <div class="ms-3">
-                <p class="mb-2">Today Revenue</p>
-                <h6 class="mb-0">$1234</h6>
+    <div class="col-sm-6 col-md-3">
+        <div class="card card-stats card-round">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-icon">
+                        <div class="icon-big text-center icon-success bubble-shadow-small">
+                            <i class="fa fa-paint-brush" ></i>
+
+                        </div>
+                    </div>
+                    <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                            <p class="card-category">Kırımız renk araba sayısı</p>
+                            <h4 class="card-title">@ViewBag.GetRedCarCount.ToString("N0")</h4>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-xl-3">
-        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-            <i class="fa fa-chart-pie fa-3x text-primary"></i>
-            <div class="ms-3">
-                <p class="mb-2">Total Revenue</p>
-                <h6 class="mb-0">$1234</h6>
+    <div class="col-sm-6 col-md-3">
+        <div class="card card-stats card-round">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-icon">
+                        <div class="icon-big text-center icon-secondary bubble-shadow-small">
+                            <i class="far fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                            <p class="card-category">Sedan araç sayısı</p>
+                            <h4 class="card-title">@ViewBag.GetSedanCarCount.ToString("N0")</h4>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,8 +1,9 @@
 ﻿@{
     Layout = "~/Views/UILayout/Index.cshtml";
 }
-<div class="container-fluid pt-4 px-4">
-    @await Component.InvokeAsync("_DashboardWidgetComponentPartial")
-    @await Component.InvokeAsync("_DashboardChartComponentPartial")
-</div>
+
+@await Component.InvokeAsync("_DashboardWidgetComponentPartial")
+@await Component.InvokeAsync("_DashboardChartComponentPartial")
+
+
 

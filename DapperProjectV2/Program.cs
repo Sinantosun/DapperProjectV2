@@ -1,5 +1,6 @@
 using DapperProjectV2.Context;
 using DapperProjectV2.Services;
+using DapperProjectV2.Services.CarServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<DapperContext>();
 builder.Services.AddScoped<IWidgetService,WidgetService>();
+builder.Services.AddScoped<ICarService,CarService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -2,6 +2,7 @@
 using DapperProjectV2.Context;
 using DapperProjectV2.Dtos.ChartDto;
 using DapperProjectV2.Services;
+using DapperProjectV2.Services.CarServices;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -9,11 +10,11 @@ namespace DapperProjectV2.Controllers
 {
     public class DashboardController : Controller
     {
-       private readonly DapperContext _context;
+        private readonly ICarService _carService;
 
-        public DashboardController(DapperContext context)
+        public DashboardController(ICarService carService)
         {
-            _context = context;
+            _carService = carService;
         }
 
         public IActionResult Index()
@@ -24,10 +25,7 @@ namespace DapperProjectV2.Controllers
 
         public async Task<IActionResult> GetCarUsingFuelChart()
         {
-            //brand as Brand, count(brand) as Count from PLATES group by BRAND
-            var query = "select Brand as Brand, COUNT(*) as Count from plates where Fuel = 'Benzin' group by Brand";
-            var connection = _context.CreateConnection();
-            var result = await connection.QueryAsync<ResultCarFuelDto>(query);
+            var result = await _carService.GetCarUsingFuelChartAsync();
             var jsonValues = JsonConvert.SerializeObject(result);
 
             return Json(jsonValues);
@@ -35,10 +33,13 @@ namespace DapperProjectV2.Controllers
 
         public async Task<IActionResult> GetCarOfBrandCount()
         {
-            //brand as Brand, count(brand) as Count from PLATES group by BRAND
-            var query = "select brand, COUNT(*) as count from plates group by brand";
-            var connection = _context.CreateConnection();
-            var result = await connection.QueryAsync<ResultCarBrandDto>(query);
+            var result = await _carService.GetCarOfBrandCountAsync();
+            var jsonValues = JsonConvert.SerializeObject(result);
+            return Json(jsonValues);
+        }
+        public async Task<IActionResult> GetMotorVolumeCount()
+        {
+            var result = await _carService.GetMotorVolumeCountAsync();
             var jsonValues = JsonConvert.SerializeObject(result);
             return Json(jsonValues);
         }

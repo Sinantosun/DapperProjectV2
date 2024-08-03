@@ -2,9 +2,9 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
     google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawChart1);
 
-    function drawChart() {
+    function drawChart1() {
 
         $.ajax({
             url: '/Dashboard/GetCarUsingFuelChart',
@@ -31,16 +31,16 @@
 </script>
 <script type="text/javascript">
     google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawChart2);
 
-    function drawChart() {
+    function drawChart2() {
 
         $.ajax({
             url: '/Dashboard/GetCarOfBrandCount',
             type: 'get',
             success: function (Brand) {
                 var arrayData = [['Task', 'Hours per Day']];
-                
+
                 var Brands = jQuery.parseJSON(Brand);
                 $.each(Brands, function (index, value) {
                     arrayData.push([value.Brand, value.Count]);
@@ -60,36 +60,43 @@
     }
 </script>
 <script type="text/javascript">
-    google.charts.load("current", { packages: ['corechart'] });
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-            ["Element", "Density", { role: "style" }],
-            ["Copper", 8.94, "#b87333"],
-            ["Silver", 10.49, "silver"],
-            ["Gold", 19.30, "gold"],
-            ["Platinum", 21.45, "color: #e5e4e2"]
-        ]);
 
-        var view = new google.visualization.DataView(data);
-        view.setColumns([0, 1,
-            {
-                calc: "stringify",
-                sourceColumn: 1,
-                type: "string",
-                role: "annotation"
-            },
-            2]);
 
-        var options = {
-            title: "Density of Precious Metals, in g/cm^3",
+    google.charts.load("current", { packages: ["corechart"] });
+    google.charts.setOnLoadCallback(drawChart3);
+    function drawChart3() {
+        $.ajax({
+            url: '/Dashboard/GetMotorVolumeCount',
+            type: 'get',
+            success: function (MotorVolume) {
+                var result = jQuery.parseJSON(MotorVolume);
+                var arrayData = [["Element", "Density", { role: "style" }]];
+                $.each(result, function (index, value) {
+                    arrayData.push([value.Brand, value.Count, "silver"])
+                });
+                var data = google.visualization.arrayToDataTable(arrayData);
+                var view = new google.visualization.DataView(data);
+                view.setColumns([0, 1,
+                    {
+                        calc: "stringify",
+                        sourceColumn: 1,
+                        type: "string",
+                        role: "annotation"
+                    },
+                    2]);
 
-            height: 400,
-            bar: { groupWidth: "80%" },
-            legend: { position: "none" },
-        };
-        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-        chart.draw(view, options);
+                var options = {
+                    title: "1.3 - 1.6 Motor altında araç grafiği",
+                   
+                    height: 400,
+                    bar: { groupWidth: "50%" },
+                    legend: { position: "none" },
+                };
+                var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+                chart.draw(view, options);
+            }
+        })
+
     }
 </script>
 
@@ -102,142 +109,5 @@
     </div>
     <div class="col-md-12 mt-2 mb-4">
         <div id="columnchart_values"></div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="card card-round">
-            <div class="card-header">
-                <div class="card-head-row card-tools-still-right">
-                    <div class="card-title">Transaction History</div>
-                    <div class="card-tools">
-                        <div class="dropdown">
-                            <button class="btn btn-icon btn-clean me-0"
-                                    type="button"
-                                    id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                            <div class="dropdown-menu"
-                                 aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <!-- Projects table -->
-                    <table class="table align-items-center mb-0">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">Payment Number</th>
-                                <th scope="col" class="text-end">Date & Time</th>
-                                <th scope="col" class="text-end">Amount</th>
-                                <th scope="col" class="text-end">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                    Payment from #10231
-                                </th>
-                                <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                                <td class="text-end">$250.00</td>
-                                <td class="text-end">
-                                    <span class="badge badge-success">Completed</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                    Payment from #10231
-                                </th>
-                                <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                                <td class="text-end">$250.00</td>
-                                <td class="text-end">
-                                    <span class="badge badge-success">Completed</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                    Payment from #10231
-                                </th>
-                                <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                                <td class="text-end">$250.00</td>
-                                <td class="text-end">
-                                    <span class="badge badge-success">Completed</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                    Payment from #10231
-                                </th>
-                                <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                                <td class="text-end">$250.00</td>
-                                <td class="text-end">
-                                    <span class="badge badge-success">Completed</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                    Payment from #10231
-                                </th>
-                                <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                                <td class="text-end">$250.00</td>
-                                <td class="text-end">
-                                    <span class="badge badge-success">Completed</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                    Payment from #10231
-                                </th>
-                                <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                                <td class="text-end">$250.00</td>
-                                <td class="text-end">
-                                    <span class="badge badge-success">Completed</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                    Payment from #10231
-                                </th>
-                                <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                                <td class="text-end">$250.00</td>
-                                <td class="text-end">
-                                    <span class="badge badge-success">Completed</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
     </div>
 </div>

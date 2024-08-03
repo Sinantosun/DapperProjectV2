@@ -62,7 +62,7 @@ namespace DapperProjectV2.Services
 
         public async Task<int> GetMotorVolumeCountAsync()
         {
-            var query = "select COUNT(*) from PLATES where MOTORVOLUME > @MOTORVOLUME";
+            var query = "select COUNT(*) from PLATES where MOTORVOLUME = @MOTORVOLUME";
             var parametres = new DynamicParameters();
             parametres.Add("@MOTORVOLUME", "1301-1600 cc");
             var connection = _context.CreateConnection();

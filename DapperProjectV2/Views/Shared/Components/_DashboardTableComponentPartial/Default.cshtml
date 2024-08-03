@@ -1,0 +1,47 @@
+﻿@using DapperProjectV2.Dtos.CarDtos
+@model List<ResultRandomCarDto>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-round">
+            <div class="card-header">
+                <div class="card-head-row card-tools-still-right">
+                    <div class="card-title">Hızlı bakış tablosu<br />
+                        <small>Modeli yüksek 10 araç listesi</small>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <!-- Projects table -->
+                    <table class="table align-items-center mb-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Plaka</th>
+                                <th scope="col" >Araç</th>
+                                <th scope="col" >Yıl</th>
+                                <th scope="col" >Renk</th>
+                                <th scope="col" >Yakıt Türü</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@item.Plate</th>
+                                    <td scope="row">@item.TITLE</td>
+                                    <td scope="row">@item.YEAR_</td>
+                                    <td scope="row">@item.COLOR</td>
+                                    <td scope="row">@item.FUEL</td>
+
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

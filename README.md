@@ -1,4 +1,4 @@
-Bu projede Dapper ORM kullanarak dashboard ekranı ve verilerin listelendiği filitrelenebildiği bir proje geliştirdim.<br>
+Bu projede Dapper ORM kullanarak dashboard ekranı ve verilerin listelendiği filtrelenebildiği  bir proje geliştirdim.<br>
 Projede veri seti olarak Ömer Çolakoğlu hocamızın kaggle üzerinde ücretsiz olarak yayınladığı içerisinde 4 milyon fake araba plakalarının bulunduğu "4 Million Turkish Car Plate Dataset with Fake Data" veri setini kullandım.
 
   <h1> ☆ Dapper nedir ?  ☆ </h1>

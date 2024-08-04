@@ -28,10 +28,10 @@ Projede veri seti olarak Ömer Çolakoğlu hocamızın kaggle üzerinde ücretsi
 
 ![image](https://github.com/user-attachments/assets/b4a687f6-efde-48fd-9f85-411af6e9357c)
 
-📌 3. adımda context sınıfımızı oluşturuyoruz. <br>
-📌 private readonly IConfiguration _configuration; --> bu kısımda IConfiguration Interfacesinden bir örneği Constractr ile örnek aliyoruz bunun sebebi ise appsettings dosyasında geçtiğimiz bağlantı yolunu bu servis sayesinde okuyacağız <br>
-📌 private readonly string _ConnectionString; --> bağlantı adresimizi string olarak tutacak  <br>
-📌 _ConnectionString = _configuration.GetConnectionString("DefaultConnection"); --> Yukarda AppSettings.json dosyasınından bağlantı okumak için tamıladığımız interface içinde bulunan <b>"GetConnectionString()"</b> methodu ile appsettings ConnectionString adı altında geçtiğimiz bağlantı adını buraya parametre olarak  ekliyoruz. <br>
-📌 public IDbConnection CreateConnection() => new SqlConnection(_ConnectionString); --> son işlem olarak IDbConnection yardımıyla oluşturduğumuz okuduğumz bağlantıyı sql connection sınıfına parametre olarak aktarıyoruz ve bu şekilde createCoonnection methodu cağırıldığında bağlantı oluşturulmuş olacak. <br>
+📌 3. adımda context sınıfımızı oluşturuyoruz. <br> <br>
+📌 private readonly IConfiguration _configuration; --> bu kısımda IConfiguration Interfacesinden bir örneği Constractr ile örnek aliyoruz bunun sebebi ise appsettings dosyasında geçtiğimiz bağlantı yolunu bu servis sayesinde okuyacağız <br> <br>
+📌 private readonly string _ConnectionString; --> bağlantı adresimizi string olarak tutacak  <br> <br>
+📌 _ConnectionString = _configuration.GetConnectionString("DefaultConnection"); --> Yukarda AppSettings.json dosyasınından bağlantı okumak için tamıladığımız interface içinde bulunan <b>"GetConnectionString()"</b> methodu ile appsettings ConnectionString adı altında geçtiğimiz bağlantı adını buraya parametre olarak  ekliyoruz. <br> <br>
+📌 public IDbConnection CreateConnection() => new SqlConnection(_ConnectionString); --> son işlem olarak IDbConnection yardımıyla oluşturduğumuz okuduğumz bağlantıyı sql connection sınıfına parametre olarak aktarıyoruz ve bu şekilde createCoonnection methodu cağırıldığında bağlantı oluşturulmuş olacak. <br> <br>
 Not: SqlConnection using System.Data.SqlClient; nameSpacesi ile -- System.Data.SqlClient kütüphanesi ile gelmektedir, kullanılan veri tabanına göre bu kısım değişiklik gösterebilir.
 

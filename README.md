@@ -41,11 +41,11 @@ Not: SqlConnection using System.Data.SqlClient; nameSpacesi ile -- System.Data.S
 
 ![image](https://github.com/user-attachments/assets/c645c526-8a21-4517-b32a-8e37dd8a4813)
 
-📌 listeleme işlemi için bütün tabloyu çekeceğiz bu sebeble select * from plates diyoruz ve bunu query adında bir değişkene atıyoruz.  <br>
-📌 context sınıfında oluşturduğumuz CreateConnection() methodunu connection değişkenine atıyoruz  <br> 
-📌 sonuçları result adında tutacağımız bir deşken oluşturuyor, oluşturduğumuz bağlantı sınıfına <b>"QueryAsync"<b/> ile sql sorgumuzu ve sql sorgusu neticesinde bize döncek verilerin dönüş türünü belirtiyoruz burada ResultCarDto türünde veriler gelecektir  <br>
+📌 listeleme işlemi için bütün tabloyu çekeceğiz bu sebeble select * from plates diyoruz ve bunu query adında bir değişkene atıyoruz.  <br> <br>
+📌 context sınıfında oluşturduğumuz CreateConnection() methodunu connection değişkenine atıyoruz  <br>  <br>
+📌 sonuçları result adında tutacağımız bir deşken oluşturuyor, oluşturduğumuz bağlantı sınıfına <b>"QueryAsync"<b/> ile sql sorgumuzu ve sql sorgusu neticesinde bize döncek verilerin dönüş türünü belirtiyoruz burada ResultCarDto türünde veriler gelecektir  <br> <br>
 
-📌 Servislerimizi yazdıktan sonra ilgili controllere gidip servisi contstractr geçmeliyiz daha sonra methodu çağırıp dönen değerleri view içinde döndüğümüzde listeleme işlemi tamamlanacaktır. <br>
+📌 Servislerimizi yazdıktan sonra ilgili controllere gidip servisi contstractr geçmeliyiz daha sonra methodu çağırıp dönen değerleri view içinde döndüğümüzde listeleme işlemi tamamlanacaktır. <br> <br>
 <hr>
 
 <h1> ☆ Proje Görselleri  ☆ </h1>

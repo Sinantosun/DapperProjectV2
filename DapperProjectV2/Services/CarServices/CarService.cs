@@ -3,6 +3,8 @@ using DapperProjectV2.Context;
 using DapperProjectV2.Dtos.CarDtos;
 using DapperProjectV2.Dtos.ChartDto;
 using Newtonsoft.Json;
+using X.PagedList;
+using X.PagedList.Extensions;
 
 namespace DapperProjectV2.Services.CarServices
 {
@@ -15,12 +17,12 @@ namespace DapperProjectV2.Services.CarServices
             _context = context;
         }
 
-        public async Task<List<ResultCarDto>> GetCarListAsync()
+        public async Task<IEnumerable<ResultCarDto>> GetCarListAsync()
         {
             var query = "select * from Plates";
             var connection = _context.CreateConnection();
             var result = await connection.QueryAsync<ResultCarDto>(query);
-            return result.ToList();
+            return result;
 
         }
 
@@ -58,6 +60,21 @@ namespace DapperProjectV2.Services.CarServices
             var connection = _context.CreateConnection();
             var result = await connection.QueryAsync<ResultRandomCarDto>(query);
             return result.ToList();
+        }
+
+        public async Task<IEnumerable<ResultCarDto>> GetCarFilter(string filter)
+        {
+            filter = "%" + filter + "%";
+            var query = "select * from plates where FUEL like @FUEL or SHIFTTYPE like @SHIFTTYPE OR BRAND like @BRAND or PLATE like @PLATE or YEAR_  like @YEAR_ ";
+            var parametres = new DynamicParameters();
+            parametres.Add("@FUEL", filter);
+            parametres.Add("@SHIFTTYPE", filter);
+            parametres.Add("@BRAND", filter);
+            parametres.Add("@PLATE", filter);
+            parametres.Add("@YEAR_", filter);
+            var connection = _context.CreateConnection();
+            var result = await connection.QueryAsync<ResultCarDto>(query, parametres);
+            return result;
         }
     }
 }

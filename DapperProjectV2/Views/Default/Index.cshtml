@@ -1,18 +1,22 @@
 ﻿@using DapperProjectV2.Dtos.CarDtos
+@using X.PagedList
+@using X.Web.PagedList
+@model IPagedList<ResultCarDto>
+
 @{
     ViewData["Title"] = "Index";
     int count = 0;
     Layout = "~/Views/UILayout/Index.cshtml";
+    decimal tempdata;
 }
 
-@model List<ResultCarDto>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
 <script>
     function Search() {
         var value = $("#txtfilter").val();
-        window.location.href = "/Default/CarFilter?filter="+value;
+        window.location.href = "/Default/CarFilter?filter=" + value;
     }
 </script>
 
@@ -20,56 +24,79 @@
     <div class="card-header">
         <div class="card-title">4 Million Turkish Car Plate With Fake Data List</div>
     </div>
-    <div class="card-body">
-        <div class="card-sub">
-            <small>Filitrenebilicek Kriterler</small>
-            <ul>
-                <li>Yakıt Türü</li>
-                <li>Şanzıman  Türü</li>
-                <li>Model</li>
-                <li>Plaka</li>
-                <li>Yıl</li>
-            </ul>
-
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="txtfilter" placeholder="Aranacak Kriter" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button style="margin-left:20px" onclick="Search()" class="btn btn-secondary" type="button"><i class="fa fa-filter"></i> Filitrele</button>
-                </div>
-            </div>
-
-
-
-
-        </div>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Plaka</th>
-                    <th scope="col">Araç </th>
-                    <th scope="col">Yıl</th>
-                    <th scope="col">Renk</th>
-                    <th scope="col">Yakıt Türü</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
+    @if (Model.Any())
+    {
+        <div class="card-body">
+            <div class="card-sub">
+                <small>Filitrenebilicek Kriterler</small>
+                <ul>
+                    <li>Yakıt Türü</li>
+                    <li>Şanzıman  Türü</li>
+                    <li>Marka</li>
+                    <li>Plaka</li>
+                    <li>Yıl</li>
+                </ul>
+                @if (TempData["Filter"] != null)
                 {
-                    count++;
-                    <tr>
-                        <td>@count</td>
-                        <td>@item.Plate</td>
-                        <td>@item.TITLE</td>
-                        <td>@item.YEAR_</td>
-                        <td>@item.COLOR</td>
-                        <td>@item.FUEL</td>
-                    </tr>
+                    tempdata = Convert.ToDecimal(TempData["FilterCount"]);
+                    <div class="alert alert-warning">
+                        <span style="text-transform:capitalize"> '@TempData["Filter"]'</span> ile ilgili arama sonuçları (@tempdata.ToString("N0") sonuç bulundu)
+                    </div>
                 }
-            </tbody>
-        </table>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="txtfilter" placeholder="Aranacak Kriter" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button style="margin-left:20px" onclick="Search()" class="btn btn-secondary" type="button"><i class="fa fa-filter"></i> Filitrele</button>
+                    </div>
+                </div>
 
 
-    </div>
+
+
+
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Plaka</th>
+                        <th scope="col">Araç </th>
+                        <th scope="col">Yıl</th>
+                        <th scope="col">Renk</th>
+                        <th scope="col">Yakıt Türü</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Plate</td>
+                            <td>@item.TITLE</td>
+                            <td>@item.YEAR_</td>
+                            <td>@item.COLOR</td>
+                            <td>@item.FUEL</td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @Html.PagedListPager((IPagedList)Model, pageNumber => Url.Action("Index", new { pageNumber, filter = TempData["filter"] }), new PagedListRenderOptions { LiElementClasses = new List<string> { "page-link" } })
+        </div>
+    }
+    else
+    {
+        @if (TempData["Filter"] != null)
+        {
+            <div class="alert alert-info">@TempData["Filter"].ToString() Bu kritere göre veri bulunamadı  <a href="/Default/Index">Geri Dön</a></div>
+        }
+        else
+        {
+            <div class="alert alert-info">Tablo da henüz hiç veri yok</div>
+        }
+    }
+
 </div>
 

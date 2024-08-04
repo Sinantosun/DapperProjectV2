@@ -50,6 +50,7 @@ Not: SqlConnection using System.Data.SqlClient; nameSpacesi ile -- System.Data.S
 <h1> ☆ Proje Görselleri  ☆ </h1>
 
 <h2> 📌 Dashboard Sayfası 📌</h2>
+
 ![image01](https://github.com/user-attachments/assets/ff4a3bbe-0f7e-4709-aa1a-addb57649e4d)
 
 ![image02](https://github.com/user-attachments/assets/6283a981-0c04-4e3d-8d3d-1cc641e06c6e)
